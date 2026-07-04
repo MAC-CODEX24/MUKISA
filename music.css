@@ -1,0 +1,134 @@
+/* ===== MUSIC PAGE CSS ===== */
+@import 'footer.css';
+
+/* ── Hero ─────────────────────────────────────────────────────────── */
+.music-hero {
+  background:
+    radial-gradient(ellipse 70% 70% at 55% 40%, rgba(139,92,246,0.28) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 60% at 15% 75%, rgba(167,139,250,0.12) 0%, transparent 55%),
+    linear-gradient(135deg, #08001a 0%, #160040 40%, #200060 70%, #08001a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.music-hero::before {
+  content: '🎵';
+  position: absolute;
+  font-size: 24rem;
+  opacity: 0.04;
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* ── Genre tabs ──────────────────────────────────────────────────── */
+.genre-tabs {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.genre-tab {
+  padding: 0.45rem 1.1rem;
+  background: #1a1a1a;
+  color: #aaa;
+  border: 1px solid #333;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.25s;
+}
+
+.genre-tab:hover {
+  background: rgba(124,58,237,0.1);
+  border-color: rgba(124,58,237,0.4);
+  color: #c4b5fd;
+}
+
+.genre-tab.active {
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  border-color: #7c3aed;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(124,58,237,0.4);
+}
+
+/* ── Music card thumb ────────────────────────────────────────────── */
+.music-thumb {
+  background: linear-gradient(135deg, #120030, #2a0070, #4400a8);
+  position: relative;
+  overflow: hidden;
+}
+
+.music-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ── Card hover ──────────────────────────────────────────────────── */
+.media-card:hover {
+  border-color: #7c3aed;
+  box-shadow: 0 10px 30px rgba(124,58,237,0.2);
+}
+
+/* ── Play button ─────────────────────────────────────────────────── */
+.media-card .play-btn {
+  background: linear-gradient(135deg, #5500cc, #7c00ff);
+}
+
+.media-card .play-btn:hover {
+  background: linear-gradient(135deg, #7c00ff, #9b30ff);
+  box-shadow: 0 4px 18px rgba(124,0,255,0.45);
+}
+
+/* ── Now Playing bar ─────────────────────────────────────────────── */
+.now-playing {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(90deg, #120030, #200055, #120030);
+  background-size: 200% auto;
+  animation: gradientShift 4s ease infinite;
+  border-left: 4px solid #7c00ff;
+  border-radius: 12px;
+  color: #c990ff;
+  font-weight: 600;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.now-playing-icon {
+  font-size: 1.5rem;
+  animation: spin 2.5s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ── Section title ───────────────────────────────────────────────── */
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: #f0f0f0;
+  border-left: 4px solid #7c3aed;
+  padding-left: 0.75rem;
+}

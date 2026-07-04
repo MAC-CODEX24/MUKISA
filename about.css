@@ -1,0 +1,335 @@
+/* ===== ABOUT PAGE CSS ===== */
+@import 'footer.css';
+
+/* ── Hero ─────────────────────────────────────────────────────────── */
+.about-hero {
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(139,92,246,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 70%, rgba(99,102,241,0.2) 0%, transparent 55%),
+    linear-gradient(135deg, #0c0015 0%, #160030 40%, #1a1050 70%, #0c0015 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero::before {
+  content: 'ℹ️';
+  position: absolute;
+  font-size: 22rem;
+  opacity: 0.03;
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  animation: floatBg 8s ease-in-out infinite;
+}
+
+.about-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 400px at 15% 30%, rgba(139,92,246,0.12), transparent),
+              radial-gradient(circle 300px at 85% 70%, rgba(99,102,241,0.1), transparent);
+  pointer-events: none;
+  animation: pulseBg 6s ease-in-out infinite alternate;
+}
+
+@keyframes floatBg {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50%       { transform: translateY(-53%) scale(1.04); }
+}
+
+@keyframes pulseBg {
+  from { opacity: 0.6; }
+  to   { opacity: 1; }
+}
+
+/* ── Mission ─────────────────────────────────────────────────────── */
+.about-mission {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.mission-text h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.25rem;
+  background: linear-gradient(135deg, #c4b5fd, #818cf8, #e879f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding-left: 1rem;
+  border-left: 4px solid #7c3aed;
+}
+
+.mission-text p {
+  color: #aaa;
+  margin-bottom: 1rem;
+  line-height: 1.9;
+  font-size: 0.96rem;
+}
+
+.mission-text .btn {
+  margin-top: 0.75rem;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+}
+
+.mission-text .btn:hover {
+  background: linear-gradient(135deg, #6d28d9, #4338ca);
+}
+
+/* Mission icon grid */
+.mission-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.m-icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(124,58,237,0.07);
+  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: 14px;
+  padding: 1.5rem 1rem;
+  font-size: 2rem;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.m-icon-box:hover {
+  transform: translateY(-6px);
+  border-color: #7c3aed;
+  box-shadow: 0 0 20px rgba(124,58,237,0.25);
+}
+
+.m-icon-box span {
+  font-size: 0.72rem;
+  color: #a78bfa;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── Stats ───────────────────────────────────────────────────────── */
+.about-stats {
+  background:
+    radial-gradient(ellipse 80% 100% at 50% 50%, rgba(124,58,237,0.07) 0%, transparent 70%),
+    linear-gradient(90deg, #0a0a0f, #120020, #0a0a0f);
+  padding: 5rem 2rem;
+  border-top: 1px solid rgba(124,58,237,0.15);
+  border-bottom: 1px solid rgba(124,58,237,0.15);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 3.2rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #c4b5fd 0%, #818cf8 50%, #e879f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 12px rgba(139,92,246,0.4));
+}
+
+.stat-label {
+  font-size: 0.88rem;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── Team ────────────────────────────────────────────────────────── */
+.about-team {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-center-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  background: linear-gradient(135deg, #f0e6ff, #c4b5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-center-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #7c3aed, #e879f9);
+  border-radius: 2px;
+  margin: 0.75rem auto 0;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.team-card {
+  background: #141420;
+  border: 1px solid rgba(124,58,237,0.15);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  border-color: #7c3aed;
+  box-shadow: 0 16px 40px rgba(124,58,237,0.2);
+}
+
+.team-avatar {
+  font-size: 3.5rem;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  background: rgba(124,58,237,0.1);
+  border: 3px solid rgba(124,58,237,0.2);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.team-card:hover .team-avatar {
+  border-color: #a855f7;
+  box-shadow: 0 0 0 6px rgba(168,85,247,0.15), 0 0 20px rgba(168,85,247,0.3);
+}
+
+.team-role {
+  display: inline-block;
+  padding: 0.25rem 0.85rem;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  margin-bottom: 0.75rem;
+}
+
+.team-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  color: #f0e6ff;
+}
+
+.team-card p:last-child {
+  color: #888;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* ── Values ──────────────────────────────────────────────────────── */
+.about-values {
+  background: #09090f;
+  padding: 5rem 0;
+  border-top: 1px solid #1e1e2e;
+}
+
+.values-inner {
+  max-width: 1100px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.value-item {
+  background: #111120;
+  border: 1px solid #2a2a3a;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Unique accent per card: 1=red, 2=yellow, 3=cyan, 4=purple */
+.value-item:nth-child(1) { border-top: 3px solid #ef4444; }
+.value-item:nth-child(1):hover { border-color: #ef4444; box-shadow: 0 8px 30px rgba(239,68,68,0.15); }
+
+.value-item:nth-child(2) { border-top: 3px solid #f59e0b; }
+.value-item:nth-child(2):hover { border-color: #f59e0b; box-shadow: 0 8px 30px rgba(245,158,11,0.15); }
+
+.value-item:nth-child(3) { border-top: 3px solid #06b6d4; }
+.value-item:nth-child(3):hover { border-color: #06b6d4; box-shadow: 0 8px 30px rgba(6,182,212,0.15); }
+
+.value-item:nth-child(4) { border-top: 3px solid #8b5cf6; }
+.value-item:nth-child(4):hover { border-color: #8b5cf6; box-shadow: 0 8px 30px rgba(139,92,246,0.15); }
+
+.value-item:hover {
+  transform: translateY(-5px);
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.value-item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.value-item p {
+  color: #888;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* ── Section title (shared) ──────────────────────────────────────── */
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #c4b5fd, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  border-left: 4px solid #7c3aed;
+  padding-left: 0.75rem;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .mission-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .stats-grid   { grid-template-columns: repeat(2, 1fr); }
+  .mission-icon-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stat-number { font-size: 2rem; }
+}

@@ -1,0 +1,132 @@
+/* ===== CONTACT PAGE CSS ===== */
+@import 'footer.css';
+
+/* ── Hero ─────────────────────────────────────────────────────────── */
+.contact-hero {
+  background:
+    radial-gradient(ellipse 70% 70% at 50% 50%, rgba(59,130,246,0.2) 0%, transparent 65%),
+    linear-gradient(135deg, #000a1a 0%, #001533 40%, #001a45 70%, #000a1a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-hero::before {
+  content: '📩';
+  position: absolute;
+  font-size: 20rem;
+  opacity: 0.04;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Animated glow ring */
+.contact-hero::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(59,130,246,0.15);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: heroRing 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes heroRing {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+  50%       { transform: translate(-50%, -50%) scale(1.12); opacity: 0.8; }
+}
+
+/* ── Form card ───────────────────────────────────────────────────── */
+.contact-form-wrap {
+  background: rgba(10,15,30,0.85);
+  border: 1px solid rgba(59,130,246,0.2);
+  border-radius: 16px;
+  padding: 2.5rem;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form-wrap:focus-within {
+  border-color: rgba(59,130,246,0.5);
+  box-shadow: 0 0 30px rgba(59,130,246,0.08);
+}
+
+.contact-form-wrap h2 {
+  margin-bottom: 1.75rem;
+  border-left: 4px solid #3b82f6;
+  padding-left: 0.75rem;
+}
+
+/* Input focus blue */
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.14);
+}
+
+/* Submit button with shimmer */
+.contact-form-wrap .btn {
+  background: linear-gradient(135deg, #2563eb, #3b82f6, #1d4ed8);
+  background-size: 200% auto;
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  margin-top: 0.5rem;
+  transition: background-position 0.4s ease, box-shadow 0.3s, transform 0.2s;
+}
+
+.contact-form-wrap .btn:hover {
+  background-position: right center;
+  box-shadow: 0 6px 25px rgba(59,130,246,0.4);
+  transform: translateY(-2px);
+}
+
+/* ── Info panel ──────────────────────────────────────────────────── */
+.contact-info {
+  background: rgba(10,15,30,0.85);
+  border: 1px solid rgba(59,130,246,0.2);
+  border-radius: 16px;
+  padding: 2.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.contact-info h2 {
+  margin-bottom: 2rem;
+  border-left: 4px solid #3b82f6;
+  padding-left: 0.75rem;
+}
+
+/* Per-icon colours */
+.info-item:nth-child(1) .info-icon { color: #22c55e; background: rgba(34,197,94,0.1); border-radius: 8px; padding: 0.4rem; }  /* address = green */
+.info-item:nth-child(2) .info-icon { color: #3b82f6; background: rgba(59,130,246,0.1); border-radius: 8px; padding: 0.4rem; }  /* email = blue */
+.info-item:nth-child(3) .info-icon { color: #f97316; background: rgba(249,115,22,0.1); border-radius: 8px; padding: 0.4rem; }  /* phone = orange */
+.info-item:nth-child(4) .info-icon { color: #a855f7; background: rgba(168,85,247,0.1); border-radius: 8px; padding: 0.4rem; }  /* hours = purple */
+
+.info-item strong { color: #3b82f6; }
+
+/* Email link */
+.contact-info a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* Social buttons with platform colours */
+.social-btn.twitter   { border-color: #1da1f2; color: #1da1f2; }
+.social-btn.facebook  { border-color: #4267b2; color: #4267b2; }
+.social-btn.instagram { border-color: #e1306c; color: #e1306c; }
+.social-btn.youtube   { border-color: #ff0000; color: #ff0000; }
+
+.social-btn:nth-child(1):hover { background: #1da1f2; border-color: #1da1f2; color: #fff; }
+.social-btn:nth-child(2):hover { background: #4267b2; border-color: #4267b2; color: #fff; }
+.social-btn:nth-child(3):hover { background: #e1306c; border-color: #e1306c; color: #fff; }
+.social-btn:nth-child(4):hover { background: #ff0000; border-color: #ff0000; color: #fff; }

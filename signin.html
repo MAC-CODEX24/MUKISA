@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In — MediaHub</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/auth.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* ===== SUCCESS POPUP ===== */
+    .signin-popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .signin-popup-overlay.active { display: flex; }
+
+    .signin-popup {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      max-width: 380px;
+      width: 90%;
+      position: relative;
+      animation: popIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.7); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* Fireworks canvas behind popup */
+    #fireworksCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    .popup-emoji { font-size: 3rem; margin-bottom: 0.75rem; display: block; }
+    .popup-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #f0f0f0;
+      margin-bottom: 0.5rem;
+    }
+    .popup-subtitle { color: #777; font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+    .popup-btn {
+      display: inline-block;
+      padding: 0.7rem 2rem;
+      background: #e50914;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .popup-btn:hover { background: #b0060f; transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo" aria-label="MediaHub Home">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#e50914" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="#e50914" stroke-width="1.5"/></svg>
+      MediaHub
+    </a>
+    <nav>
+      <ul id="navMenu">
+        <li><a href="index.html"><i class="fa-solid fa-house nav-icon"></i> Home</a></li>
+        <li><a href="music.html"><i class="fa-solid fa-music nav-icon"></i> Music</a></li>
+        <li><a href="movies.html"><i class="fa-solid fa-film nav-icon"></i> Movies</a></li>
+        <li><a href="blog.html"><i class="fa-solid fa-newspaper nav-icon"></i> Blog</a></li>
+        <li><a href="sports.html"><i class="fa-solid fa-trophy nav-icon"></i> Sports</a></li>
+        <li><a href="education.html"><i class="fa-solid fa-graduation-cap nav-icon"></i> Education</a></li>
+        <li><a href="about.html"><i class="fa-solid fa-circle-info nav-icon"></i> About</a></li>
+        <li><a href="contact.html"><i class="fa-solid fa-envelope nav-icon"></i> Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div class="nav-dropdown header-settings-dropdown">
+        <button class="header-dots-btn nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Settings"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+        <div class="nav-dropdown-menu" role="menu">
+          <div class="dropdown-section-label">Legal</div>
+          <a href="privacy.html" role="menuitem"><i class="fa-solid fa-lock"></i> Privacy Policy</a>
+          <a href="terms.html" role="menuitem"><i class="fa-solid fa-file-lines"></i> Terms of Service</a>
+          <a href="terms.html#cookies" role="menuitem"><i class="fa-solid fa-cookie-bite"></i> Cookie Policy</a>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-section-label">Follow Us</div>
+          <a href="https://twitter.com/" target="_blank" rel="noopener" role="menuitem" class="follow-link twitter"><i class="fa-brands fa-x-twitter"></i> Twitter / X</a>
+          <a href="https://facebook.com/" target="_blank" rel="noopener" role="menuitem" class="follow-link facebook"><i class="fa-brands fa-facebook"></i> Facebook</a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" role="menuitem" class="follow-link instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
+          <a href="https://youtube.com/" target="_blank" rel="noopener" role="menuitem" class="follow-link youtube"><i class="fa-brands fa-youtube"></i> YouTube</a>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-section-label">Preferences</div>
+          <a href="#" role="menuitem" id="themeToggleBtn"><i class="fa-solid fa-circle-half-stroke"></i> Toggle Dark / Light</a>
+          <a href="#" role="menuitem" id="fontSizeBtn"><i class="fa-solid fa-text-height"></i> Text Size</a>
+          <a href="#" role="menuitem" id="langBtn"><i class="fa-solid fa-language"></i> Language</a>
+          <a href="#" role="menuitem" id="animToggleBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> Animations</a>
+          <a href="#" role="menuitem" id="contrastBtn"><i class="fa-solid fa-eye"></i> High Contrast</a>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-section-label">Account</div>
+          <a href="signin.html" role="menuitem"><i class="fa-solid fa-right-to-bracket"></i> Sign In</a>
+          <a href="signup.html" role="menuitem"><i class="fa-solid fa-user-plus"></i> Create Account</a>
+          <a href="dashboard.html" role="menuitem"><i class="fa-solid fa-user"></i> My Dashboard</a>
+          <a href="notifications.html" role="menuitem"><i class="fa-solid fa-bell"></i> Notifications</a>
+          <a href="advertise.html" role="menuitem"><i class="fa-solid fa-bullhorn"></i> Advertise With Us</a>
+          <a href="contact.html" role="menuitem"><i class="fa-solid fa-comment-dots"></i> Feedback</a>
+        </div>
+      </div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </div>
+  </header>
+  <div class="body-auth-bar">
+    <a href="notifications.html" class="notif-bell" aria-label="Notifications"><i class="fa-solid fa-bell"></i><span class="notif-bell-count">3</span></a>
+    <a href="signin.html" class="btn-signin active"><i class="fa-solid fa-right-to-bracket"></i> <span class="btn-label">Sign In</span></a>
+    <a href="signup.html" class="btn-signup"><i class="fa-solid fa-user-plus"></i> <span class="btn-label">Sign Up Free</span></a>
+  </div>
+
+  <!-- ===== FIREWORKS CANVAS (behind popup) ===== -->
+  <canvas id="fireworksCanvas"></canvas>
+
+  <!-- ===== SUCCESS POPUP ===== -->
+  <div class="signin-popup-overlay" id="signinPopup" role="dialog" aria-modal="true" aria-label="Sign in successful">
+    <div class="signin-popup">
+      <span class="popup-emoji">🎉</span>
+      <div class="popup-title">Welcome back!</div>
+      <div class="popup-subtitle" id="popupUsername">You've signed in successfully.</div>
+      <button class="popup-btn" onclick="closeSigninPopup()">Continue to Dashboard →</button>
+    </div>
+  </div>
+
+  <!-- ===== SIGN IN FORM ===== -->
+  <main class="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="margin-right:0.4rem"><circle cx="12" cy="12" r="10" stroke="#e50914" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="#e50914" stroke-width="1.5"/></svg>
+        MediaHub
+      </div>
+      <p class="auth-subtitle">Welcome back! Sign in to your account.</p>
+
+      <div class="auth-msg" id="authMsg"></div>
+
+      <div class="social-auth">
+        <a href="#" class="social-auth-btn"><i class="fa-brands fa-google"></i> Google</a>
+        <a href="#" class="social-auth-btn"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+        <a href="#" class="social-auth-btn"><i class="fa-brands fa-x-twitter"></i> Twitter</a>
+      </div>
+
+      <div class="auth-divider">or sign in with email</div>
+
+      <form class="auth-form" id="signinForm" onsubmit="handleSignIn(event)" novalidate>
+        <div class="form-group">
+          <label for="signin-email">Email Address</label>
+          <input type="email" id="signin-email" placeholder="your@email.com" autocomplete="email" required />
+        </div>
+        <div class="form-group">
+          <label for="signin-pw">Password</label>
+          <div class="pw-wrap">
+            <input type="password" id="signin-pw" placeholder="Enter your password" autocomplete="current-password" required />
+            <button type="button" class="pw-toggle" onclick="togglePw('signin-pw',this)" aria-label="Show password">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <div class="auth-remember">
+          <label><input type="checkbox" id="rememberMe" /> Remember me</label>
+          <a href="#">Forgot password?</a>
+        </div>
+        <button type="submit" class="auth-btn">Sign In <i class="fa-solid fa-arrow-right"></i></button>
+      </form>
+
+      <div class="auth-links">
+        Don't have an account? <a href="signup.html">Create one free</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <div class="footer-logo-wrap">
+          <span class="footer-logo-icon">🎬</span>
+          <span class="footer-logo-text">MediaHub</span>
+        </div>
+        <p class="footer-tagline">Your ultimate destination for music, movies, sports, education and more.</p>
+        <div class="footer-socials">
+          <a href="https://twitter.com/" target="_blank" rel="noopener" class="footer-social-btn twitter" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://facebook.com/" target="_blank" rel="noopener" class="footer-social-btn facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" class="footer-social-btn instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://youtube.com/" target="_blank" rel="noopener" class="footer-social-btn youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://tiktok.com/" target="_blank" rel="noopener" class="footer-social-btn tiktok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-nav-col">
+        <h4 class="footer-col-title">Pages</h4>
+        <ul class="footer-nav-list">
+          <li><a href="index.html"><span class="link-arrow">›</span> Home</a></li>
+          <li><a href="music.html"><span class="link-arrow">›</span> Music</a></li>
+          <li><a href="movies.html"><span class="link-arrow">›</span> Movies</a></li>
+          <li><a href="blog.html"><span class="link-arrow">›</span> Blog</a></li>
+          <li><a href="sports.html"><span class="link-arrow">›</span> Sports</a></li>
+          <li><a href="education.html"><span class="link-arrow">›</span> Education</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4 class="footer-col-title">Company</h4>
+        <ul class="footer-nav-list">
+          <li><a href="about.html"><span class="link-arrow">›</span> About Us</a></li>
+          <li><a href="contact.html"><span class="link-arrow">›</span> Contact</a></li>
+          <li><a href="privacy.html"><span class="link-arrow">›</span> Privacy Policy</a></li>
+          <li><a href="terms.html"><span class="link-arrow">›</span> Terms of Service</a></li>
+          <li><a href="advertise.html"><span class="link-arrow">›</span> Advertise</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4 class="footer-col-title">Contact</h4>
+        <ul class="footer-contact-items">
+          <li>
+            <div class="contact-icon-wrap">📧</div>
+            <div class="contact-text">
+              <span class="contact-label">Email</span>
+              <span class="contact-value"><a href="mailto:theblackhats24@gmail.com">theblackhats24@gmail.com</a></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-bottom-copy">&copy; 2026 MediaHub. All rights reserved. Designed by Macodex @#</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a><span class="sep">·</span>
+        <a href="terms.html">Terms</a><span class="sep">·</span>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+  <script>
+    /* ===================================================
+       SIGN IN — popup + fireworks
+       handleSignIn is called by the form's onsubmit
+    =================================================== */
+    function handleSignIn(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('signin-email').value.trim();
+      const pw    = document.getElementById('signin-pw').value;
+      const msg   = document.getElementById('authMsg');
+
+      // Basic validation
+      if (!email || !pw) {
+        msg.textContent = 'Please fill in all fields.';
+        msg.style.color = '#e50914';
+        return;
+      }
+
+      // Show success popup + fireworks
+      const name = email.split('@')[0];
+      document.getElementById('popupUsername').textContent =
+        'Welcome back, ' + name + '! Redirecting to your dashboard…';
+      document.getElementById('signinPopup').classList.add('active');
+      launchFireworks();
+
+      // Redirect after 3 seconds
+      setTimeout(() => { window.location.href = 'dashboard.html'; }, 3000);
+    }
+
+    function closeSigninPopup() {
+      document.getElementById('signinPopup').classList.remove('active');
+      stopFireworks();
+      window.location.href = 'dashboard.html';
+    }
+
+    function togglePw(id, btn) {
+      const input = document.getElementById(id);
+      const isHidden = input.type === 'password';
+      input.type = isHidden ? 'text' : 'password';
+      btn.innerHTML = isHidden
+        ? '<i class="fa-solid fa-eye-slash"></i>'
+        : '<i class="fa-solid fa-eye"></i>';
+    }
+
+    /* ===================================================
+       FIREWORKS ENGINE
+    =================================================== */
+    const canvas  = document.getElementById('fireworksCanvas');
+    const ctx     = canvas.getContext('2d');
+    let particles = [];
+    let animFrame = null;
+    let running   = false;
+
+    function resizeCanvas() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function randomColour() {
+      const cols = ['#e50914','#ff6b6b','#f5c518','#00d4ff','#a855f7','#4caf50','#ff8c00'];
+      return cols[Math.floor(Math.random() * cols.length)];
+    }
+
+    function createBurst(x, y) {
+      const count = 80 + Math.floor(Math.random() * 60);
+      for (let i = 0; i < count; i++) {
+        const angle  = (Math.PI * 2 / count) * i + Math.random() * 0.3;
+        const speed  = 2 + Math.random() * 6;
+        particles.push({
+          x, y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          alpha: 1,
+          colour: randomColour(),
+          radius: 2 + Math.random() * 2.5,
+          decay: 0.012 + Math.random() * 0.01
+        });
+      }
+    }
+
+    function animateFireworks() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles = particles.filter(p => p.alpha > 0.01);
+      particles.forEach(p => {
+        p.x  += p.vx;
+        p.y  += p.vy;
+        p.vy += 0.08; // gravity
+        p.vx *= 0.98;
+        p.alpha -= p.decay;
+        ctx.globalAlpha = Math.max(p.alpha, 0);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.colour;
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+      if (running) animFrame = requestAnimationFrame(animateFireworks);
+    }
+
+    let burstInterval = null;
+    function launchFireworks() {
+      running = true;
+      // Fire initial bursts
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          createBurst(
+            canvas.width  * (0.2 + Math.random() * 0.6),
+            canvas.height * (0.1 + Math.random() * 0.5)
+          );
+        }, i * 200);
+      }
+      animateFireworks();
+      // Keep launching new bursts
+      burstInterval = setInterval(() => {
+        createBurst(
+          canvas.width  * (0.1 + Math.random() * 0.8),
+          canvas.height * (0.1 + Math.random() * 0.6)
+        );
+      }, 600);
+    }
+
+    function stopFireworks() {
+      running = false;
+      clearInterval(burstInterval);
+      if (animFrame) cancelAnimationFrame(animFrame);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles = [];
+    }
+  </script>
+</body>
+</html>

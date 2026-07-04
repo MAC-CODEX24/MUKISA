@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> 🌐 MediaHub - Home</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/home.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
+  <link rel="stylesheet" href="../css/auth.css" />
+  <!-- Font Awesome for proper icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <header>
+    <!-- Logo links to home -->
+    <a href="index.html" class="logo" aria-label="MediaHub Home">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#e50914" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="#e50914" stroke-width="1.5"/></svg>
+      MediaHub
+    </a>
+
+    <nav>
+      <ul id="navMenu">
+        <li>
+          <a href="index.html" class="active">
+            <i class="fa-solid fa-house nav-icon"></i> Home
+          </a>
+        </li>
+        <li>
+          <a href="music.html">
+            <i class="fa-solid fa-music nav-icon"></i> Music
+          </a>
+        </li>
+        <li>
+          <a href="movies.html">
+            <i class="fa-solid fa-film nav-icon"></i> Movies
+          </a>
+        </li>
+        <li>
+          <a href="blog.html">
+            <i class="fa-solid fa-newspaper nav-icon"></i> Blog
+          </a>
+        </li>
+        <li>
+          <a href="sports.html">
+            <i class="fa-solid fa-trophy nav-icon"></i> Sports
+          </a>
+        </li>
+        <li>
+          <a href="education.html">
+            <i class="fa-solid fa-graduation-cap nav-icon"></i> Education
+          </a>
+        </li>
+        <li>
+          <a href="about.html">
+            <i class="fa-solid fa-circle-info nav-icon"></i> About
+          </a>
+        </li>
+        <li>
+          <a href="contact.html">
+            <i class="fa-solid fa-envelope nav-icon"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Right side of header: ONLY three-dots settings + hamburger -->
+    <div class="nav-right">
+
+      <!-- Settings three-dots dropdown -->
+      <div class="nav-dropdown header-settings-dropdown">
+        <button class="header-dots-btn nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Settings">
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <div class="dropdown-section-label">Legal</div>
+          <a href="privacy.html" role="menuitem"><i class="fa-solid fa-lock"></i> Privacy Policy</a>
+          <a href="terms.html" role="menuitem"><i class="fa-solid fa-file-lines"></i> Terms of Service</a>
+          <a href="terms.html#cookies" role="menuitem"><i class="fa-solid fa-cookie-bite"></i> Cookie Policy</a>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-section-label">Follow Us</div>
+          <a href="https://twitter.com/" target="_blank" rel="noopener" role="menuitem" class="follow-link twitter"><i class="fa-brands fa-x-twitter"></i> Twitter / X</a>
+          <a href="https://facebook.com/" target="_blank" rel="noopener" role="menuitem" class="follow-link facebook"><i class="fa-brands fa-facebook"></i> Facebook</a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" role="menuitem" class="follow-link instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
+          <a href="https://youtube.com/" target="_blank" rel="noopener" role="menuitem" class="follow-link youtube"><i class="fa-brands fa-youtube"></i> YouTube</a>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-section-label">Preferences</div>
+          <a href="#" role="menuitem" id="themeToggleBtn"><i class="fa-solid fa-circle-half-stroke"></i> Toggle Dark / Light</a>
+          <a href="#" role="menuitem" id="fontSizeBtn"><i class="fa-solid fa-text-height"></i> Text Size</a>
+          <a href="#" role="menuitem" id="langBtn"><i class="fa-solid fa-language"></i> Language</a>
+          <a href="#" role="menuitem" id="animToggleBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> Animations</a>
+          <a href="#" role="menuitem" id="contrastBtn"><i class="fa-solid fa-eye"></i> High Contrast</a>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-section-label">Account</div>
+          <a href="signin.html" role="menuitem"><i class="fa-solid fa-right-to-bracket"></i> Sign In</a>
+          <a href="signup.html" role="menuitem"><i class="fa-solid fa-user-plus"></i> Create Account</a>
+          <a href="dashboard.html" role="menuitem"><i class="fa-solid fa-user"></i> My Dashboard</a>
+          <a href="notifications.html" role="menuitem"><i class="fa-solid fa-bell"></i> Notifications</a>
+          <a href="advertise.html" role="menuitem"><i class="fa-solid fa-bullhorn"></i> Advertise With Us</a>
+          <a href="contact.html" role="menuitem"><i class="fa-solid fa-comment-dots"></i> Feedback</a>
+        </div>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </div>
+
+  </header>
+
+  <!-- ===== BODY AUTH BAR — fixed top-right of page body ===== -->
+  <div class="body-auth-bar">
+    <a href="notifications.html" class="notif-bell" aria-label="Notifications">
+      <i class="fa-solid fa-bell"></i>
+      <span class="notif-bell-count" id="headerNotifCount">3</span>
+    </a>
+    <a href="signin.html" class="btn-signin">
+      <i class="fa-solid fa-right-to-bracket"></i> <span class="btn-label">Sign In</span>
+    </a>
+    <a href="signup.html" class="btn-signup">
+      <i class="fa-solid fa-user-plus"></i> <span class="btn-label">Sign Up Free</span>
+    </a>
+  </div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to <span>MediaHub</span></h1>
+      <p>Your one-stop destination for Music, Movies, Sports, Education &amp; More.</p>
+      <div class="hero-buttons">
+        <a href="music.html" class="btn">Explore Music</a>
+        <a href="movies.html" class="btn btn-outline">Browse Movies</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>What We Offer</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎵</div>
+        <h3>Music</h3>
+        <p>Discover the latest tracks, albums, and artists from every genre.</p>
+        <a href="music.html" class="btn">Go to Music</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎬</div>
+        <h3>Movies</h3>
+        <p>Watch trailers, read reviews, and explore top-rated films.</p>
+        <a href="movies.html" class="btn">Go to Movies</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏆</div>
+        <h3>Sports</h3>
+        <p>Live scores, match highlights and sports news from around the world.</p>
+        <a href="sports.html" class="btn">Go to Sports</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎓</div>
+        <h3>Education</h3>
+        <p>Courses, tutorials, and learning resources for every skill level.</p>
+        <a href="education.html" class="btn">Go to Education</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <h3>Blog</h3>
+        <p>Read articles, opinions, and the latest entertainment news.</p>
+        <a href="blog.html" class="btn">Go to Blog</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">📩</div>
+        <h3>Contact</h3>
+        <p>Get in touch with us for inquiries, partnerships or feedback.</p>
+        <a href="contact.html" class="btn">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRENDING SECTION -->
+  <section class="trending-section">
+    <div class="trending-inner">
+      <h2>🔥 Trending This Week</h2>
+      <p class="trending-sub">The most popular content right now across all categories</p>
+      <div class="trending-grid">
+        <div class="trending-card">
+          <div class="trending-rank">01</div>
+          <div class="trending-thumb" style="background:linear-gradient(135deg,#1a0000,#4a0010)">🎬</div>
+          <div class="trending-info">
+            <span class="trending-cat">Movie</span>
+            <h3>Stellar Drift</h3>
+            <p>⭐ 8.9 · Sci-Fi · 2026</p>
+          </div>
+          <a href="movies.html" class="btn btn-sm">Watch</a>
+        </div>
+        <div class="trending-card">
+          <div class="trending-rank">02</div>
+          <div class="trending-thumb" style="background:linear-gradient(135deg,#120030,#4400a8)">🎵</div>
+          <div class="trending-info">
+            <span class="trending-cat">Music</span>
+            <h3>Neon Lights</h3>
+            <p>🎸 Rock · The Waves</p>
+          </div>
+          <a href="music.html" class="btn btn-sm">Play</a>
+        </div>
+        <div class="trending-card">
+          <div class="trending-rank">03</div>
+          <div class="trending-thumb" style="background:linear-gradient(135deg,#001a08,#003a18)">🏆</div>
+          <div class="trending-info">
+            <span class="trending-cat">Sports</span>
+            <h3>World Cup 2026 Final</h3>
+            <p>⚽ Football · Jun 2026</p>
+          </div>
+          <a href="sports.html" class="btn btn-sm">Read</a>
+        </div>
+        <div class="trending-card">
+          <div class="trending-rank">04</div>
+          <div class="trending-thumb" style="background:linear-gradient(135deg,#070f1f,#1a4060)">🎓</div>
+          <div class="trending-info">
+            <span class="trending-cat">Education</span>
+            <h3>Web Dev Bootcamp</h3>
+            <p>💻 Tech · 40 hours</p>
+          </div>
+          <a href="education.html" class="btn btn-sm">Enroll</a>
+        </div>
+        <div class="trending-card">
+          <div class="trending-rank">05</div>
+          <div class="trending-thumb" style="background:linear-gradient(135deg,#001a08,#003518)">📝</div>
+          <div class="trending-info">
+            <span class="trending-cat">Blog</span>
+            <h3>AI-Generated Music</h3>
+            <p>📰 Opinion · May 2026</p>
+          </div>
+          <a href="blog.html" class="btn btn-sm">Read</a>
+        </div>
+        <div class="trending-card">
+          <div class="trending-rank">06</div>
+          <div class="trending-thumb" style="background:linear-gradient(135deg,#1a0005,#400015)">🎬</div>
+          <div class="trending-info">
+            <span class="trending-cat">Movie</span>
+            <h3>The Last Letter</h3>
+            <p>⭐ 9.1 · Drama · 2025</p>
+          </div>
+          <a href="movies.html" class="btn btn-sm">Watch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar">
+    <div class="stats-bar-inner">
+      <div class="stat-bar-item">
+        <div class="stat-bar-num">50K+</div>
+        <div class="stat-bar-lbl">Monthly Visitors</div>
+      </div>
+      <div class="stat-bar-sep"></div>
+      <div class="stat-bar-item">
+        <div class="stat-bar-num">10K+</div>
+        <div class="stat-bar-lbl">Titles in Library</div>
+      </div>
+      <div class="stat-bar-sep"></div>
+      <div class="stat-bar-item">
+        <div class="stat-bar-num">1,200+</div>
+        <div class="stat-bar-lbl">Articles Published</div>
+      </div>
+      <div class="stat-bar-sep"></div>
+      <div class="stat-bar-item">
+        <div class="stat-bar-num">300+</div>
+        <div class="stat-bar-lbl">Music Tracks</div>
+      </div>
+      <div class="stat-bar-sep"></div>
+      <div class="stat-bar-item">
+        <div class="stat-bar-num">4.9★</div>
+        <div class="stat-bar-lbl">User Rating</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST BLOG PREVIEW -->
+  <section class="home-blog">
+    <div class="home-blog-inner">
+      <h2>📝 Latest from the Blog</h2>
+      <p class="trending-sub">Fresh takes on entertainment, culture &amp; technology</p>
+      <div class="home-blog-grid">
+        <article class="home-blog-card">
+          <div class="home-blog-thumb" style="background:linear-gradient(135deg,#001a08,#003518)">📝</div>
+          <div class="home-blog-body">
+            <span class="home-blog-cat">Music</span>
+            <h3>Top 10 Albums of 2026 So Far</h3>
+            <p>From indie breakouts to major pop releases, we count down the best albums of the first half of 2026.</p>
+            <a href="blog.html" class="btn btn-sm">Read More →</a>
+          </div>
+        </article>
+        <article class="home-blog-card">
+          <div class="home-blog-thumb" style="background:linear-gradient(135deg,#1a0000,#350008)">🎬</div>
+          <div class="home-blog-body">
+            <span class="home-blog-cat">Movies</span>
+            <h3>Summer Blockbusters: What to Watch</h3>
+            <p>The biggest releases hitting theatres this season — from action-packed sequels to quiet indie gems.</p>
+            <a href="blog.html" class="btn btn-sm">Read More →</a>
+          </div>
+        </article>
+        <article class="home-blog-card">
+          <div class="home-blog-thumb" style="background:linear-gradient(135deg,#001515,#003838)">💻</div>
+          <div class="home-blog-body">
+            <span class="home-blog-cat">Tech</span>
+            <h3>Is AI-Generated Music a Threat?</h3>
+            <p>Artificial intelligence is composing songs and mimicking artists. What does this mean for the industry?</p>
+            <a href="blog.html" class="btn btn-sm">Read More →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <h2>❤️ What Our Users Say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p>"MediaHub is the only platform I need. Music, movies, news — all in one beautifully designed place."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">S</div>
+            <div><strong>Sarah M.</strong><span>Music Enthusiast</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p>"The education section helped me land my first dev job. The courses are top-quality and completely free."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">K</div>
+            <div><strong>Kwame B.</strong><span>Web Developer</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p>"I never miss a sports match thanks to the live ticker and highlights. Best sports coverage around."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">R</div>
+            <div><strong>Rodrigo L.</strong><span>Sports Fan</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN CTA -->
+  <section class="join-cta">
+    <div class="join-cta-inner">
+      <h2>Ready to Join MediaHub?</h2>
+      <p>Create your free account in seconds and get access to everything — music, movies, sports, education &amp; more.</p>
+      <div class="join-cta-btns">
+        <a href="signup.html" class="btn" style="font-size:1rem;padding:0.9rem 2.5rem">🚀 Create Free Account</a>
+        <a href="signin.html" class="btn btn-outline" style="font-size:1rem;padding:0.9rem 2rem">Sign In</a>
+      </div>
+      <p style="font-size:0.8rem;color:#444;margin-top:1rem">No credit card required &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Free forever</p>
+    </div>
+  </section>
+  <!--others-->
+  <section class="others">
+    <div class="footer-mid">
+      <div class="footer-mid-inner">
+        <div class="footer-newsletter">
+          <span class="footer-newsletter-label"><strong>Stay Updated</strong> — get the latest drops in your inbox</span>
+          <form class="footer-newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="your@email.com" aria-label="Email address" />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <div class="footer-badges">
+          <span class="footer-badge"><span class="dot"></span> HD Streaming</span>
+          <span class="footer-badge"><span class="dot"></span> 10K+ Titles</span>
+          <span class="footer-badge"><span class="dot"></span> Free Access</span>
+          <span class="footer-badge"><span class="dot"></span> Daily Updates</span>
+        </div>
+      </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <div class="footer-logo-wrap">
+          <span class="footer-logo-icon">🎬</span>
+          <span class="footer-logo-text">MediaHub</span>
+        </div>
+        <p class="footer-tagline">Your ultimate destination for music, movies, sports, education and more. Stay informed. Stay entertained.</p>
+        <div class="footer-socials">
+          <a href="https://twitter.com/" target="_blank" rel="noopener" class="footer-social-btn twitter" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://facebook.com/" target="_blank" rel="noopener" class="footer-social-btn facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" class="footer-social-btn instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://youtube.com/" target="_blank" rel="noopener" class="footer-social-btn youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://tiktok.com/" target="_blank" rel="noopener" class="footer-social-btn tiktok" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-nav-col">
+        <h4 class="footer-col-title">Pages</h4>
+        <ul class="footer-nav-list">
+          <li><a href="index.html"><span class="link-arrow">›</span> Home</a></li>
+          <li><a href="music.html"><span class="link-arrow">›</span> Music</a></li>
+          <li><a href="movies.html"><span class="link-arrow">›</span> Movies</a></li>
+          <li><a href="blog.html"><span class="link-arrow">›</span> Blog</a></li>
+          <li><a href="sports.html"><span class="link-arrow">›</span> Sports</a></li>
+          <li><a href="education.html"><span class="link-arrow">›</span> Education</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4 class="footer-col-title">Company</h4>
+        <ul class="footer-nav-list">
+          <li><a href="about.html"><span class="link-arrow">›</span> About Us</a></li>
+          <li><a href="contact.html"><span class="link-arrow">›</span> Contact</a></li>
+          <li><a href="privacy.html"><span class="link-arrow">›</span> Privacy Policy</a></li>
+          <li><a href="terms.html"><span class="link-arrow">›</span> Terms of Service</a></li>
+          <li><a href="advertise.html"><span class="link-arrow">›</span> Advertise</a></li>
+          <li><a href="notifications.html"><span class="link-arrow">›</span> Notifications</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <h4 class="footer-col-title">Contact</h4>
+        <ul class="footer-contact-items">
+          <li>
+            <div class="contact-icon-wrap">📧</div>
+            <div class="contact-text">
+              <span class="contact-label">Email</span>
+              <span class="contact-value"><a href="mailto:theblackhats24@gmail.com">theblackhats24@gmail.com</a></span>
+            </div>
+          </li>
+          <li>
+            <div class="contact-icon-wrap">📞</div>
+            <div class="contact-text">
+              <span class="contact-label">Phone</span>
+              <span class="contact-value">+1 (800) 555-MEDIA</span>
+            </div>
+          </li>
+          <li>
+            <div class="contact-icon-wrap">📍</div>
+            <div class="contact-text">
+              <span class="contact-label">Address</span>
+              <span class="contact-value">123 MediaHub Lane, CA 90210</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-bottom-copy">&copy; 2026 MediaHub. All rights reserved.Designed by Macodex @#</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a>
+        <span class="sep">·</span>
+        <a href="terms.html">Terms</a>
+        <span class="sep">·</span>
+        <a href="terms.html#cookies">Cookies</a>
+        <span class="sep">·</span>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>
