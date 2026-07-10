@@ -29,6 +29,15 @@
 .card-icon {
   transition: transform 0.3s ease;
 }
+/*body*/
+body {
+    background-image: url("../images/channels4_profile.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 
 /* Stagger card entrance animation */
 .cards .card:nth-child(1) { animation: fadeUp 0.5s ease 0.1s both; }
